@@ -46,7 +46,13 @@ io.on("connection", (socket) => {
 });
 
 // ===== Relay GLOBAL: daftar SEKALI (hindari spam/duplikat) =====
-botManager.events.on("botLog", (msg) => io.emit("botLog", msg));
+botManager.events.on("botLog", (msg) => {
+  if (/\[LOCAL\]/.test(msg)) {
+    io.emit("localLog", msg.replace(/^.*?\[LOCAL\]\s*/, "")); // kirim event khusus ke panel lokal
+  } else {
+    io.emit("botLog", msg); // tetap kirim ke server logs
+  }
+});
 botManager.events.on("update", (list) => io.emit("update", list));
 botManager.events.on("chat", (data) => {
   // langsung teruskan apa adanya

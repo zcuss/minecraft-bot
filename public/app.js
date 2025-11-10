@@ -108,6 +108,7 @@ socket.on("disconnect", () => {
 });
 
 socket.on("reconnect_attempt", () => addLocalLog("🔄 Reconnecting..."));
+socket.on("localLog", (msg) => addLocalLog(msg));
 
 socket.on("botLog", (msg) => {
   const text = String(msg || "");
