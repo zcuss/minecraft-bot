@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Multi-Bot — Slimefun</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="icon">🤖</div>
+        <div class="brand-text">
+          <h1>Multi-Bot</h1>
+          <p>Slimefun</p>
+        </div>
+      </div>
+
+      <!-- NAV: pindah page pakai href -->
+      <nav>
+        <a class="nav-item" href="index.html">
+          <i>🔑</i>
+          Login
+        </a>
+        <a class="nav-item" href="index.html#control">
+          <i>⚙️</i>
+          Control
+        </a>
+        <a class="nav-item active" href="slimefun.html">
+          <i>🧪</i>
+          Slimefun
+        </a>
+      </nav>
+
+      <div class="status">
+        <div class="conn">
+          <span id="connDot" class="dot bad"></span>
+          <span id="connText">Disconnected</span>
+        </div>
+        <footer>© 2025 Zelio</footer>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+      <section class="page active">
+        <div class="content-2pane">
+          <!-- Left: Bot list (local selection untuk page ini) -->
+          <aside class="pane-left">
+            <div class="card h-full">
+              <div class="card-head">
+                <h2>🤖 Bot List</h2>
+                <span class="badge" id="botCount">0</span>
+              </div>
+              <div class="bot-tools">
+                <input id="botFilter" type="text" placeholder="Cari bot..." />
+                <button id="btn-select-all" class="btn small">Pilih semua</button>
+              </div>
+              <div id="botList" class="bot-list"></div>
+            </div>
+          </aside>
+
+          <!-- Right: Slimefun actions -->
+          <section class="pane-right">
+            <div class="card">
+              <h2>🧪 Slimefun — Quick Actions</h2>
+              <p class="sub">Aksi cepat akan mengirim perintah chat ke bot yang dipilih.</p>
+              <div class="btn-group">
+                <button class="btn" id="sf-guide">📖 /sf guide</button>
+                <button class="btn" id="sf-research-all">🧠 /sf research all</button>
+                <button class="btn" id="sf-backpack">🎒 /sf backpack</button>
+              </div>
+            </div>
+
+            <div class="card">
+              <h2>🔍 Cari Resep / Item</h2>
+              <p class="sub">Gunakan /sf search & /sf wiki (jika server mendukung).</p>
+              <div class="btn-group">
+                <input id="sfSearchTerm" type="text" placeholder="contoh: carbon, android interface, ..." />
+                <button class="btn accent" id="sf-search">Search</button>
+                <button class="btn" id="sf-wiki">Wiki</button>
+              </div>
+            </div>
+
+            <div class="card">
+              <h2>🥣 Panning Machine (Auto)</h2>
+              <p class="sub">Cari cauldron + oak trapdoor terdekat, equip item (default: gravel), lalu auto-klik.</p>
+              <div class="btn-group">
+                <input id="panItem" type="text" placeholder="item (default: gravel)" />
+                <input id="panCps" type="number" min="1" max="15" value="5" />
+                <input id="panRadius" type="number" min="3" max="24" value="12" />
+                <input id="panSlot" type="number" min="1" max="9" value="1" />
+                <button class="btn accent" id="pan-start">▶️ Start</button>
+                <button class="btn secondary" id="pan-status">ℹ️ Status</button>
+                <button class="btn danger" id="pan-stop">⏹ Stop</button>
+              </div>
+              <p class="sub">Tip: pastikan stok item di inventory bot. Slot = posisi hotbar (1–9).</p>
+            </div>
+
+            <div class="card">
+              <h2>💬 Chat Singkat</h2>
+              <div class="btn-group">
+                <input id="chatMsg" type="text" placeholder="Ketik pesan… (Ctrl/Cmd + Enter)" />
+                <button class="btn accent" id="btn-send-chat">💬 Send</button>
+              </div>
+            </div>
+
+            <div class="card card-logs">
+              <div class="header">
+                <h2>📜 Logs</h2>
+                <div class="controls">
+                  <label class="pill">
+                    <input type="checkbox" id="autoScroll" checked />
+                    Auto-scroll
+                  </label>
+                  <button class="log-btn" id="btn-clear-log" title="Bersihkan log">🧹</button>
+                  <button class="log-btn" id="btn-download-log" title="Unduh log">⬇️</button>
+                </div>
+              </div>
+
+              <h3 class="log-title">🧠 Local Actions</h3>
+              <div id="logs-local" class="log-box" aria-live="polite"></div>
+
+              <h3 class="log-title">💬 Server & Bot Logs</h3>
+              <div id="logs-server" class="log-box" aria-live="polite"></div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <!-- Toast -->
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="slimefun.js"></script>
+  </body>
+</html>

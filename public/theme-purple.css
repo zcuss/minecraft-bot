@@ -1,0 +1,24 @@
+:root {
+  --accent: #a78bfa; /* Purple 400 */
+  --accent-ink: #1e1633;
+  /* nuansa teks sedikit lebih hangat */
+  --text: #ecebff;
+  --muted: #b6add9;
+}
+/* penyesuaian aksen */
+.nav-item.active {
+  background: rgba(167, 139, 250, 0.12);
+  border-color: rgba(167, 139, 250, 0.55);
+  box-shadow: inset 3px 0 0 0 var(--accent);
+  color: #f3f0ff;
+}
+.badge {
+  background: rgba(167, 139, 250, 0.14);
+  border-color: rgba(167, 139, 250, 0.35);
+  color: #f3f0ff;
+}
+.pill {
+  background: rgba(167, 139, 250, 0.1);
+  border-color: rgba(167, 139, 250, 0.28);
+  color: #e9e3ff;
+}

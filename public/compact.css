@@ -1,0 +1,59 @@
+/* Compact spacing */
+:root {
+  --radius: 12px;
+  --r-md: 10px;
+  --r-sm: 8px;
+}
+.sidebar {
+  padding: 16px 14px;
+}
+.nav-item {
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+.conn {
+  padding: 5px 8px;
+  font-size: 12px;
+}
+.main {
+  padding: 18px;
+}
+.card {
+  padding: 12px;
+  border-radius: var(--r-md);
+}
+.card h2 {
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+label {
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+input[type="text"],
+input[type="number"],
+input:not([type]) {
+  padding: 8px 10px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+}
+.btn {
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+.btn.small {
+  padding: 6px 8px;
+}
+.content-2pane {
+  gap: 10px;
+  grid-template-columns: 300px 1fr;
+}
+.bot-item {
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+.log-box {
+  height: 180px;
+  border-radius: 10px;
+  padding: 8px 10px;
+}

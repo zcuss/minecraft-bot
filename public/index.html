@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Multi-Bot Dashboard v2.1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- <link rel="stylesheet" href="theme-purple.css" /> -->
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="icon">🤖</div>
+        <div class="brand-text">
+          <h1>Multi-Bot</h1>
+          <p>Dashboard v2.1</p>
+        </div>
+      </div>
+
+      <nav>
+        <button class="nav-item active" id="tab-login">
+          <i>🔑</i>
+          Login
+        </button>
+        <button class="nav-item" id="tab-control">
+          <i>⚙️</i>
+          Control
+        </button>
+        <!-- NEW: Slimefun tab (kosong) -->
+        <button class="nav-item" id="tab-slimefun">
+          <i>🧪</i>
+          Slimefun
+        </button>
+      </nav>
+
+      <div class="status">
+        <div class="conn">
+          <span id="connDot" class="dot bad"></span>
+          <span id="connText">Disconnected</span>
+        </div>
+        <footer>© 2025 Zelio</footer>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main">
+      <!-- LOGIN -->
+      <section id="view-login" class="page active">
+        <div class="content">
+          <div class="card">
+            <h2>🧭 Buat Bot Baru</h2>
+            <p class="sub">Pisahkan pesan spawn dengan koma. Setiap pesan dikirim tiap 5 detik otomatis.</p>
+
+            <label for="username">Username Bot</label>
+            <input id="username" type="text" placeholder="contoh: Miner_01" />
+
+            <label for="server">Server (host:port)</label>
+            <input id="server" type="text" placeholder="contoh: mc.serverku.net:25565" />
+
+            <label for="spawnChat">Pesan saat spawn</label>
+            <input id="spawnChat" type="text" placeholder="/msg Zelio hallo, /msg Zelio hallo lagi, ..." />
+
+            <button id="btn-create" class="btn accent full">🚀 Buat Bot</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTROL -->
+      <section id="view-control" class="page hidden">
+        <div class="content-2pane">
+          <!-- Left: Bot list -->
+          <aside class="pane-left">
+            <div class="card h-full">
+              <div class="card-head">
+                <h2>🤖 Bot List</h2>
+                <span class="badge" id="botCount">0</span>
+              </div>
+              <div class="bot-tools">
+                <input id="botFilter" type="text" placeholder="Cari bot..." />
+                <button id="btn-select-all" class="btn small">Pilih semua</button>
+              </div>
+              <div id="botList" class="bot-list"></div>
+            </div>
+          </aside>
+
+          <!-- Right: Logs + Controls -->
+          <section class="pane-right">
+            <div class="card card-logs">
+              <div class="header">
+                <h2>📜 Logs</h2>
+                <div class="controls">
+                  <label class="pill">
+                    <input type="checkbox" id="autoScroll" checked />
+                    Auto-scroll
+                  </label>
+                  <button class="log-btn" id="btn-clear-log" title="Bersihkan log">🧹</button>
+                  <button class="log-btn" id="btn-download-log" title="Unduh log">⬇️</button>
+                </div>
+              </div>
+
+              <h3 class="log-title">🧠 Local Actions</h3>
+              <div id="logs-local" class="log-box" aria-live="polite"></div>
+
+              <h3 class="log-title">💬 Server & Bot Logs</h3>
+              <div id="logs-server" class="log-box" aria-live="polite"></div>
+            </div>
+
+            <div class="card">
+              <h2>🎮 Control Panel</h2>
+              <div class="btn-group">
+                <button class="btn accent" id="btn-mining-start">⛏️ Start</button>
+                <button class="btn secondary" id="btn-mining-stop">🛑 Stop</button>
+              </div>
+
+              <div class="btn-group">
+                <input id="raySteps" type="number" min="1" max="12" value="5" />
+                <button class="btn" id="btn-ray">🔭 Ray</button>
+              </div>
+
+              <div class="btn-group">
+                <input id="chatMsg" type="text" placeholder="Ketik pesan... (Ctrl/Cmd + Enter)" />
+                <button class="btn accent" id="btn-send-chat">💬 Send</button>
+              </div>
+
+              <button class="btn danger full" id="btn-stop">💣 Stop Bot</button>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <!-- NEW: SLIMEFUN -->
+      <section id="view-slimefun" class="page hidden">
+        <div class="content-2pane">
+          <!-- Left: Bot list khusus Slimefun -->
+          <aside class="pane-left">
+            <div class="card h-full">
+              <div class="card-head">
+                <h2>🧪 Slimefun — Bot List</h2>
+                <span class="badge" id="sfBotCount">0</span>
+              </div>
+              <div class="bot-tools">
+                <input id="sfBotFilter" type="text" placeholder="Cari bot..." />
+                <button id="sf-btn-select-all" class="btn small">Pilih semua</button>
+              </div>
+              <div id="sfBotList" class="bot-list"></div>
+              <p class="sub">Tip: List ini terpisah dari tab Control. Kamu bisa pilih beda.</p>
+            </div>
+          </aside>
+
+          <!-- Right: Panel AutoPan -->
+          <!-- Right: Panel Slimefun (Unified) -->
+          <section class="pane-right">
+            <div class="card">
+              <h2>🧪 Slimefun — Unified Runner</h2>
+              <p class="sub">
+                Pilih fitur lalu tekan Start. Opsi:
+                <b>Auto Panning</b>
+                (cauldron + oak trapdoor) atau
+                <b>Ore Washer</b>
+                (dispenser + fence + cauldron).
+              </p>
+
+              <div class="grid" style="grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+                <label>
+                  <span class="lbl">Feature</span>
+                  <select id="sfFeature">
+                    <option value="pan" selected>Auto Panning</option>
+                    <option value="washer">Ore Washer</option>
+                  </select>
+                </label>
+
+                <label>
+                  <span class="lbl">Radius cari (3–32)</span>
+                  <input id="sfRadius" type="number" min="3" max="32" value="12" />
+                </label>
+
+                <label>
+                  <span class="lbl">Clicks/sec</span>
+                  <input id="sfCps" type="number" min="1" max="20" value="5" />
+                </label>
+
+                <!-- Muncul hanya untuk Auto Panning -->
+                <label data-sf-field="item">
+                  <span class="lbl">Material (pan)</span>
+                  <input id="sfItem" type="text" value="gravel" />
+                </label>
+
+                <!-- Opsi slot (boleh kosong). Untuk pan & washer -->
+                <label data-sf-field="slot">
+                  <span class="lbl">Hotbar slot (opsional, 1–9)</span>
+                  <input id="sfSlot" type="number" min="1" max="9" placeholder="(kosongkan jika tak perlu)" />
+                </label>
+              </div>
+
+              <div class="btn-group" style="margin-top: 12px">
+                <button class="btn accent" id="btn-sf-start">▶️ Start</button>
+                <button class="btn danger" id="btn-sf-stop">⛔ Stop</button>
+                <button class="btn" id="btn-sf-status">ℹ️ Status</button>
+              </div>
+              <p class="sub">Perintah dikirim ke bot yang dipilih di list kiri.</p>
+            </div>
+
+            <div class="btn-group" style="margin-top: 8px; align-items: stretch">
+              <input id="panBuyName" type="text" placeholder="nama item (contoh: gravel)" style="flex: 1; min-width: 180px" />
+              <button class="btn" id="btn-pan-buy">🛒 Buy 9 stacks</button>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <!-- Toast -->
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+
+    <!-- Wiring 3-tab sederhana (tanpa ubah app.js) -->
+    <!-- === SCRIPT #1: Tabs (biarin aja kalau sudah ada) === -->
+    <script>
+      (function () {
+        const tabs = {
+          login: { btn: document.getElementById("tab-login"), view: document.getElementById("view-login") },
+          control: { btn: document.getElementById("tab-control"), view: document.getElementById("view-control") },
+          slimefun: { btn: document.getElementById("tab-slimefun"), view: document.getElementById("view-slimefun") },
+        };
+        function show(name) {
+          Object.values(tabs).forEach((t) => {
+            t.btn?.classList.remove("active");
+            t.view?.classList.add("hidden");
+            t.view?.classList.remove("active");
+          });
+          const t = tabs[name];
+          t?.btn?.classList.add("active");
+          t?.view?.classList.remove("hidden");
+          t?.view?.classList.add("active");
+        }
+        tabs.login.btn?.addEventListener("click", () => show("login"));
+        tabs.control.btn?.addEventListener("click", () => show("control"));
+        tabs.slimefun.btn?.addEventListener("click", () => show("slimefun"));
+      })();
+    </script>
+
+    <!-- === SCRIPT #2: UI Logic (lengkap + pan buy) === -->
+    <script>
+      (function () {
+        // ===== socket =====
+        const socket = window.socket; // pake instance yang sama dari app.js
+
+        // ===== elemen list kiri =====
+        const sfList = document.getElementById("sfBotList");
+        const sfCount = document.getElementById("sfBotCount");
+        const sfFilter = document.getElementById("sfBotFilter");
+        const sfSelectAll = document.getElementById("sf-btn-select-all");
+
+        socket.on("update", (bots) => renderSfList(bots || []));
+        // kalau server tidak support getState, ini aman-aman aja (silent)
+        try {
+          socket.emit("getState");
+        } catch (_) {}
+
+        function renderSfList(bots) {
+          sfList.innerHTML = "";
+          let n = 0;
+          bots.forEach((b) => {
+            const item = document.createElement("div");
+            item.className = "bot-item";
+            item.dataset.username = b.username;
+
+            const left = document.createElement("div");
+            left.className = "bot-id";
+            left.innerHTML = `<span class="dot ${b.connected ? "good" : "bad"}"></span>`;
+
+            const name = document.createElement("div");
+            name.className = "bot-name";
+            name.textContent = b.username;
+
+            item.appendChild(left);
+            item.appendChild(name);
+
+            item.addEventListener("click", () => {
+              if (!b.connected) return; // abaikan yang offline
+              item.classList.toggle("active");
+            });
+
+            if (b.connected) item.classList.add("active");
+            sfList.appendChild(item);
+            n++;
+          });
+          sfCount.textContent = n;
+          applyFilter();
+        }
+
+        function getSelectedSfBots() {
+          return [...sfList.querySelectorAll(".bot-item.active")].map((el) => el.dataset.username);
+        }
+
+        function applyFilter() {
+          const q = (sfFilter.value || "").toLowerCase();
+          for (const item of sfList.children) {
+            const name = item.querySelector(".bot-name")?.textContent?.toLowerCase() || "";
+            item.style.display = name.includes(q) ? "" : "none";
+          }
+        }
+        sfFilter?.addEventListener("input", applyFilter);
+
+        sfSelectAll?.addEventListener("click", () => {
+          const items = [...sfList.querySelectorAll(".bot-item")];
+          const connectedItems = items.filter((i) => i.querySelector(".dot.good"));
+          const allActive = connectedItems.length > 0 && connectedItems.every((i) => i.classList.contains("active"));
+          connectedItems.forEach((it) => {
+            const isActive = it.classList.contains("active");
+            if (allActive && isActive) it.classList.remove("active");
+            else if (!allActive && !isActive) it.classList.add("active");
+          });
+        });
+
+        // ===== helpers umum =====
+        function sendCmdTo(botName, text) {
+          console.log("[UI] sendCmdTo →", botName, text);
+          socket.emit("command", { username: botName, text });
+        }
+        function toast(msg) {
+          const t = document.getElementById("toast");
+          if (!t) return;
+          t.textContent = msg;
+          t.classList.add("show");
+          setTimeout(() => t.classList.remove("show"), 1200);
+        }
+        function clamp(n, min, max) {
+          n = Number.isFinite(n) ? n : min;
+          return Math.max(min, Math.min(max, n));
+        }
+
+        // ===== unified controls (pan / washer) =====
+        const elFeature = document.getElementById("sfFeature");
+        const elRadius = document.getElementById("sfRadius");
+        const elCps = document.getElementById("sfCps");
+        const elItem = document.getElementById("sfItem");
+        const elSlot = document.getElementById("sfSlot");
+
+        function refreshFields() {
+          const f = elFeature.value;
+          // field item hanya untuk pan
+          document.querySelectorAll('[data-sf-field="item"]').forEach((el) => {
+            el.style.display = f === "pan" ? "" : "none";
+          });
+          // batas cps
+          elCps.min = "1";
+          elCps.max = f === "pan" ? "15" : "20";
+          if (+elCps.value > +elCps.max) elCps.value = elCps.max;
+          if (+elCps.value < +elCps.min) elCps.value = elCps.min;
+        }
+        elFeature.addEventListener("change", refreshFields);
+        refreshFields();
+
+        function buildCommand(subcmd) {
+          const feature = elFeature.value; // "pan" | "washer"
+          const radius = clamp(+elRadius.value, 3, 32);
+          const cpsCap = feature === "pan" ? 15 : 20;
+          const cps = clamp(+elCps.value, 1, cpsCap);
+          const args = [`radius=${radius}`, `cps=${cps}`];
+
+          const slotVal = elSlot.value?.trim();
+          if (slotVal) args.push(`slot=${clamp(+slotVal, 1, 9)}`);
+
+          if (feature === "pan") {
+            const item = (elItem.value || "gravel").trim();
+            if (item) args.push(`item=${item}`);
+          }
+
+          return `${feature} ${subcmd}${subcmd === "start" ? " " + args.join(" ") : ""}`.trim();
+        }
+
+        document.getElementById("btn-sf-start")?.addEventListener("click", () => {
+          const targets = getSelectedSfBots();
+          if (targets.length === 0) return toast("Pilih minimal 1 bot di list kiri.");
+          const cmd = buildCommand("start");
+          console.log("[UI] Start cmd:", cmd, "→ targets:", targets);
+          targets.forEach((u) => sendCmdTo(u, cmd));
+          toast(`Start ${elFeature.value} → ${targets.length} bot`);
+        });
+
+        document.getElementById("btn-sf-stop")?.addEventListener("click", () => {
+          const targets = getSelectedSfBots();
+          if (targets.length === 0) return toast("Pilih minimal 1 bot di list kiri.");
+          const cmd = buildCommand("stop");
+          console.log("[UI] Stop cmd:", cmd, "→ targets:", targets);
+          targets.forEach((u) => sendCmdTo(u, cmd));
+          toast(`Stop ${elFeature.value} → ${targets.length} bot`);
+        });
+
+        document.getElementById("btn-sf-status")?.addEventListener("click", () => {
+          const targets = getSelectedSfBots();
+          if (targets.length === 0) return toast("Pilih minimal 1 bot di list kiri.");
+          const cmd = buildCommand("status");
+          console.log("[UI] Status cmd:", cmd, "→ targets:", targets);
+          targets.forEach((u) => sendCmdTo(u, cmd));
+        });
+
+        // ===== pan buy (form) =====
+        const elBuyName = document.getElementById("panBuyName");
+        const btnPanBuy = document.getElementById("btn-pan-buy");
+
+        function doPanBuy() {
+          const targets = getSelectedSfBots();
+          if (targets.length === 0) return toast("Pilih minimal 1 bot.");
+
+          const raw = (elBuyName.value || "").trim();
+          if (!raw) return toast("Isi nama item dulu (contoh: gravel).");
+
+          const encoded = encodeURIComponent(raw); // aman untuk spasi/karakter khusus
+          const cmd = `pan buy name=${encoded}`;
+
+          console.log("[UI] PanBuy click:", { raw, encoded, targets, cmd });
+          targets.forEach((u) => sendCmdTo(u, cmd));
+          toast(`AutoBuy: ${raw} → ${targets.length} bot`);
+        }
+
+        if (btnPanBuy) {
+          btnPanBuy.addEventListener("click", doPanBuy);
+          console.log("[UI] btn-pan-buy listener attached");
+        } else {
+          console.warn("[UI] btn-pan-buy NOT FOUND");
+        }
+
+        elBuyName?.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            doPanBuy();
+          }
+        });
+
+        // (opsional) expose sedikit buat debug dari console
+        window.__sfUI = {
+          getSelectedSfBots,
+          sendCmdTo,
+          doPanBuy,
+        };
+      })();
+    </script>
+  </body>
+</html>

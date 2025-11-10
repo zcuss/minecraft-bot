@@ -1,0 +1,101 @@
+[10:47:37] [Zelio8] cmd: pan buy name=gravel
+[10:47:37] [Zelio8] 🧾 pan.buy → target='gravel'
+[10:47:37] [Zelio8] [LOCAL] 🛒 AutoBuy start: 'gravel' (/shop)
+[10:47:37] [Zelio8] [LOCAL] 🔎 Direct search on root
+[10:47:37] [Zelio8] [LOCAL] 🔍 Found product @page 1, slot 68: Gravel (total=13)
+[10:47:37] [Zelio8] [LOCAL] 🎯 Click target: slot=68, name="Gravel", id=gravel
+[10:47:37] [Zelio8] [LOCAL] 🧾 Before buy — window contents:
+[10:47:37] [Zelio8] [LOCAL]    [20] Grass Block — id:grass_block
+[10:47:37] [Zelio8] [LOCAL]    [21] Oak Leaves — id:oak_leaves
+[10:47:37] [Zelio8] [LOCAL]    [22] Monster Spawner — id:spawner
+[10:47:37] [Zelio8] [LOCAL]    [23] Brewing Stand — id:brewing_stand
+[10:47:37] [Zelio8] [LOCAL]    [24] Block of Emerald — id:emerald_block
+[10:47:37] [Zelio8] [LOCAL]    [29] Rotten Flesh — id:rotten_flesh
+[10:47:37] [Zelio8] [LOCAL]    [30] Pumpkin Pie — id:pumpkin_pie
+[10:47:37] [Zelio8] [LOCAL]    [31] Hay Bale — id:hay_block
+[10:47:37] [Zelio8] [LOCAL]    [32] Anvil — id:anvil
+[10:47:37] [Zelio8] [LOCAL]    [33] Block of Redstone — id:redstone_block
+[10:47:37] [Zelio8] [LOCAL]    [54] Clay Ball — id:clay_ball
+[10:47:37] [Zelio8] [LOCAL]    [55] Flint — id:flint
+[10:47:37] [Zelio8] [LOCAL]    [56] Gunpowder — id:gunpowder
+[10:47:37] [Zelio8] [LOCAL]    [57] Flint — id:flint
+[10:47:37] [Zelio8] [LOCAL]    [58] Gunpowder — id:gunpowder
+[10:47:37] [Zelio8] [LOCAL]    [59] Clay Ball — id:clay_ball
+[10:47:37] [Zelio8] [LOCAL]    [60] Flint — id:flint
+[10:47:37] [Zelio8] [LOCAL]    [61] Flint — id:flint
+[10:47:37] [Zelio8] [LOCAL]    [62] Gunpowder — id:gunpowder
+[10:47:37] [Zelio8] [LOCAL]    [63] Flint — id:flint
+[10:47:37] [Zelio8] [LOCAL]    [68] Gravel — id:gravel
+[10:47:37] [Zelio8] [LOCAL]    [69] Gravel — id:gravel
+[10:47:37] [Zelio8] [LOCAL]    [70] Gravel — id:gravel
+[10:47:37] [Zelio8] [LOCAL]    [71] Gravel — id:gravel
+[10:47:37] [Zelio8] [LOCAL]    [72] Gravel — id:gravel
+[10:47:37] [Zelio8] [LOCAL]    [73] Gravel — id:gravel
+[10:47:37] [Zelio8] [LOCAL]    [74] Gravel — id:gravel
+[10:47:37] [Zelio8] [LOCAL]    [75] Gravel — id:gravel
+[10:47:37] [Zelio8] [LOCAL]    [76] Gunpowder — id:gunpowder
+[10:47:37] [Zelio8] [LOCAL]    [77] Gravel — id:gravel
+[10:47:37] [Zelio8] [LOCAL]    [78] Gravel — id:gravel
+[10:47:37] [Zelio8] [LOCAL]    [79] Gravel — id:gravel
+[10:47:37] [Zelio8] [LOCAL]    [80] Gravel — id:gravel
+[10:47:37] [Zelio8] [LOCAL]    [81] Gravel — id:gravel
+[10:47:37] [Zelio8] [LOCAL]    [82] Gunpowder — id:gunpowder
+[10:47:37] [Zelio8] [LOCAL]    [83] Flint — id:flint
+[10:47:37] [Zelio8] [LOCAL]    [84] Clay Ball — id:clay_ball
+[10:47:37] [Zelio8] [LOCAL]    [85] Gunpowder — id:gunpowder
+[10:47:37] [Zelio8] [LOCAL]    [86] Flint — id:flint
+[10:47:37] [Zelio8] [LOCAL]    [87] Iron Nugget — id:iron_nugget
+[10:47:37] [Zelio8] [LOCAL]    [88] Gunpowder — id:gunpowder
+[10:47:37] [Zelio8] [LOCAL]    [89] Clay Ball — id:clay_ball
+[10:47:37] [Zelio8] [LOCAL] 🛍️ Instant LEFT-BUY target: slot=68, name="Gravel", id=gravel
+[10:47:37] [Zelio8] [LOCAL]    🔘 left click #1
+[10:47:37] [Zelio8] [LOCAL]    🔘 left click #2
+[10:47:37] [Zelio8] [LOCAL]    🔘 left click #3
+[10:47:38] [Zelio8] [LOCAL]    🔘 left click #4
+[10:47:38] [Zelio8] [LOCAL]    🔘 left click #5
+[10:47:38] ⚙️ <SERVER> ������ |  [Lvl. 428.64K] 「Lord」.Fallios8345: per shulker
+[10:47:38] [Zelio8] [LOCAL] ⚠️ Tidak ada penambahan item "Gravel" (id=gravel). Cek saldo/limit atau tipe klik yang benar.
+[10:47:38] [Zelio8] [LOCAL] 🧾 After buy — window contents (may be unchanged):
+[10:47:38] [Zelio8] [LOCAL]    [20] Grass Block — id:grass_block
+[10:47:38] [Zelio8] [LOCAL]    [21] Oak Leaves — id:oak_leaves
+[10:47:38] [Zelio8] [LOCAL]    [22] Monster Spawner — id:spawner
+[10:47:38] [Zelio8] [LOCAL]    [23] Brewing Stand — id:brewing_stand
+[10:47:38] [Zelio8] [LOCAL]    [24] Block of Emerald — id:emerald_block
+[10:47:38] [Zelio8] [LOCAL]    [29] Rotten Flesh — id:rotten_flesh
+[10:47:38] [Zelio8] [LOCAL]    [30] Pumpkin Pie — id:pumpkin_pie
+[10:47:38] [Zelio8] [LOCAL]    [31] Hay Bale — id:hay_block
+[10:47:38] [Zelio8] [LOCAL]    [32] Anvil — id:anvil
+[10:47:38] [Zelio8] [LOCAL]    [33] Block of Redstone — id:redstone_block
+[10:47:38] [Zelio8] [LOCAL]    [54] Clay Ball — id:clay_ball
+[10:47:38] [Zelio8] [LOCAL]    [55] Flint — id:flint
+[10:47:38] [Zelio8] [LOCAL]    [56] Gunpowder — id:gunpowder
+[10:47:38] [Zelio8] [LOCAL]    [57] Flint — id:flint
+[10:47:38] [Zelio8] [LOCAL]    [58] Gunpowder — id:gunpowder
+[10:47:38] [Zelio8] [LOCAL]    [59] Clay Ball — id:clay_ball
+[10:47:38] [Zelio8] [LOCAL]    [60] Flint — id:flint
+[10:47:38] [Zelio8] [LOCAL]    [61] Flint — id:flint
+[10:47:38] [Zelio8] [LOCAL]    [62] Gunpowder — id:gunpowder
+[10:47:38] [Zelio8] [LOCAL]    [63] Flint — id:flint
+[10:47:38] [Zelio8] [LOCAL]    [68] Gravel — id:gravel
+[10:47:38] [Zelio8] [LOCAL]    [69] Gravel — id:gravel
+[10:47:38] [Zelio8] [LOCAL]    [70] Gravel — id:gravel
+[10:47:38] [Zelio8] [LOCAL]    [71] Gravel — id:gravel
+[10:47:38] [Zelio8] [LOCAL]    [72] Gravel — id:gravel
+[10:47:38] [Zelio8] [LOCAL]    [73] Gravel — id:gravel
+[10:47:38] [Zelio8] [LOCAL]    [74] Gravel — id:gravel
+[10:47:38] [Zelio8] [LOCAL]    [75] Gravel — id:gravel
+[10:47:38] [Zelio8] [LOCAL]    [76] Gunpowder — id:gunpowder
+[10:47:38] [Zelio8] [LOCAL]    [77] Gravel — id:gravel
+[10:47:38] [Zelio8] [LOCAL]    [78] Gravel — id:gravel
+[10:47:38] [Zelio8] [LOCAL]    [79] Gravel — id:gravel
+[10:47:38] [Zelio8] [LOCAL]    [80] Gravel — id:gravel
+[10:47:38] [Zelio8] [LOCAL]    [81] Gravel — id:gravel
+[10:47:38] [Zelio8] [LOCAL]    [82] Gunpowder — id:gunpowder
+[10:47:38] [Zelio8] [LOCAL]    [83] Flint — id:flint
+[10:47:38] [Zelio8] [LOCAL]    [84] Clay Ball — id:clay_ball
+[10:47:38] [Zelio8] [LOCAL]    [85] Gunpowder — id:gunpowder
+[10:47:38] [Zelio8] [LOCAL]    [86] Flint — id:flint
+[10:47:38] [Zelio8] [LOCAL]    [87] Iron Nugget — id:iron_nugget
+[10:47:38] [Zelio8] [LOCAL]    [88] Gunpowder — id:gunpowder
+[10:47:38] [Zelio8] [LOCAL]    [89] Clay Ball — id:clay_ball
+[10:47:38] [Zelio8] [LOCAL] ✅ AutoBuy selesai (instant left-click).
